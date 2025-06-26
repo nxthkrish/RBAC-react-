@@ -4,12 +4,17 @@ import { AuthUser } from "../types/user";
 import { login as apiLogin } from "../api/userService";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+    // Restore user from localStorage if present (for demo convenience)
   const [user, setUser] = useState<AuthUser | null>(() => {
     const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null;
   });
 
   const login = async (credentials: { email: string; password: string }) => {
+    // Always clear previous user before login to avoid stale state
+    setUser(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("authToken");
     try {
       const authUser = await apiLogin(credentials);
       setUser(authUser);

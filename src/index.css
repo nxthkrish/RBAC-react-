@@ -247,9 +247,9 @@ body, .container-fluid, .user-mgmt-bg {
   font-size: 1.08rem;
 }
 .animated-login-card .form-control:focus {
-  border-color: #233876;
-  box-shadow: 0 0 0 0.18rem rgba(35,56,118,0.13);
-  background: #fff;
+  border-color: #0dcaf0 !important;
+  box-shadow: 0 0 0 3px #0dcaf055 !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 .animated-login-card .form-label {
   font-weight: 600;
@@ -269,6 +269,26 @@ body, .container-fluid, .user-mgmt-bg {
   background: linear-gradient(90deg, #1e40af 60%, #233876 100%);
   box-shadow: 0 6px 24px rgba(35,56,118,0.16);
   transform: translateY(-2px) scale(1.04);
+}
+
+/* Responsive login card adjustments */
+.animated-login-card {
+  width: 100%;
+  max-width: 400px;
+  min-width: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .animated-login-card {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem !important;
+    border-radius: 1.1rem !important;
+  }
+  .animated-login-bg {
+    padding: 0 !important;
+  }
 }
 
 /* --- Premium Dark Blue Theme for All UI Cards, Buttons, and Avatars --- */
@@ -529,4 +549,37 @@ body, .container-fluid, .user-mgmt-bg {
   box-shadow: 0 2px 8px #0dcaf033;
   color: #fff !important; /* Make icon white for visibility */
   filter: drop-shadow(0 2px 8px #0a58ca88); /* Add subtle blue shadow */
+}
+
+/* Shake animation for invalid email */
+@keyframes shake-horizontal {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+  100% { transform: translateX(0); }
+}
+.shake-horizontal {
+  animation: shake-horizontal 0.4s;
+}
+
+/* Page fade transition for route changes */
+.page-fade-enter {
+  opacity: 0;
+  transform: translateY(16px) scale(0.98);
+}
+.page-fade-enter-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.3s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+.page-fade-exit {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.page-fade-exit-active {
+  opacity: 0;
+  transform: translateY(-12px) scale(0.98);
+  transition: opacity 0.22s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1);
 }
