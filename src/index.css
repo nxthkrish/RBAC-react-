@@ -563,23 +563,3 @@ body, .container-fluid, .user-mgmt-bg {
 .shake-horizontal {
   animation: shake-horizontal 0.4s;
 }
-
-/* Page fade transition for route changes */
-.page-fade-enter {
-  opacity: 0;
-  transform: translateY(16px) scale(0.98);
-}
-.page-fade-enter-active {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  transition: opacity 0.3s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1);
-}
-.page-fade-exit {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-.page-fade-exit-active {
-  opacity: 0;
-  transform: translateY(-12px) scale(0.98);
-  transition: opacity 0.22s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1);
-}

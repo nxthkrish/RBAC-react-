@@ -1,13 +1,9 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
-import { Outlet, useLocation } from "react-router-dom";
-import { CSSTransition, SwitchTransition } from "react-transition-group";
-import "../../index.css"; // Ensure global CSS is loaded
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
-  const location = useLocation();
-
   return (
     <div
       className="d-flex flex-column min-vh-100 w-100 overflow-hidden"
@@ -28,18 +24,7 @@ const Layout = () => {
           style={{ minHeight: 0, overflowX: "auto" }}
         >
           <Container fluid className="p-0">
-            <SwitchTransition>
-              <CSSTransition
-                key={location.pathname}
-                classNames="page-fade"
-                timeout={300}
-                unmountOnExit
-              >
-                <div>
-                  <Outlet />
-                </div>
-              </CSSTransition>
-            </SwitchTransition>
+            <Outlet />
           </Container>
         </Col>
       </Row>
