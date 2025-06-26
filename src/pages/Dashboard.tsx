@@ -209,17 +209,6 @@ const Dashboard = () => {
       { month: "Dec", revenue: 135000 },
     ];
 
-    // Mock users/clients list for the partner
-    const partnerUsers = [
-      { id: 1, name: "Alice Johnson", email: "alice@company.com", status: "Active" },
-      { id: 2, name: "Bob Smith", email: "bob@company.com", status: "Active" },
-      { id: 3, name: "Charlie Lee", email: "charlie@company.com", status: "Inactive" },
-      { id: 4, name: "Diana Prince", email: "diana@company.com", status: "Active" },
-      { id: 5, name: "Ethan Hunt", email: "ethan@company.com", status: "Active" },
-      { id: 6, name: "Fiona Glenanne", email: "fiona@company.com", status: "Inactive" },
-      // ...add more as needed
-    ];
-
     dashboardContent = (
       <Row className="g-4">
         <Col md={6}>
@@ -321,60 +310,8 @@ const Dashboard = () => {
             </Card.Body>
           </Card>
         </Col>
-        {/* Responsive Users Grid */}
-        <Col md={12}>
-          <Card className="shadow-sm mb-4 dashboard-card-hover">
-            <Card.Body>
-              <Card.Title className="fw-bold text-center mb-3">
-                Your Users
-              </Card.Title>
-              <Row xs={1} sm={2} md={3} lg={4} className="g-3">
-                {partnerUsers.map((u) => (
-                  <Col key={u.id}>
-                    <Card className="h-100 user-card text-center">
-                      <Card.Body>
-                        <div
-                          className="aceternity-avatar-3d mx-auto mb-2"
-                          style={{ width: 48, height: 48 }}
-                        >
-                          <span className="aceternity-avatar-text" style={{ fontSize: "1.2rem" }}>
-                            {u.name
-                              .split(" ")
-                              .map((n) => n[0])
-                              .join("")
-                              .toUpperCase()}
-                          </span>
-                        </div>
-                        <Card.Title className="fs-6 mb-1" style={{ color: "#0dcaf0" }}>
-                          {u.name}
-                        </Card.Title>
-                        <Card.Text className="mb-1" style={{ color: "#b6c1d1", fontSize: "0.97rem" }}>
-                          {u.email}
-                        </Card.Text>
-                        <span
-                          className={`badge rounded-pill ${
-                            u.status === "Active" ? "bg-success" : "bg-secondary"
-                          }`}
-                          style={{
-                            fontSize: "0.85em",
-                            fontWeight: 600,
-                            letterSpacing: "0.5px",
-                          }}
-                        >
-                          {u.status}
-                        </span>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                ))}
-              </Row>
-            </Card.Body>
-          </Card>
-        </Col>
       </Row>
     );
-  } else if (user?.role === "admin") {
-    // Optionally, you can show the admin avatar somewhere if needed
   }
 
   return <div className="container-fluid py-4">{dashboardContent}</div>;
